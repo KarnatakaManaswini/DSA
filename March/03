@@ -1,0 +1,29 @@
+Longest subarray with Atmost two distinct integers:
+
+Input: arr[] = [2, 1, 2]
+Output: 3
+Input: arr[] = [3, 1, 2, 2, 2, 2]
+Output: 5
+
+Code:
+class Solution {
+    public int totalElements(int[] arr) {
+        HashMap<Integer,Integer> h=new HashMap<>();
+        int i=0,j=0,l=0;
+        
+        for(i=0;i<arr.length;i++){
+            h.put(arr[i],h.getOrDefault(arr[i],0)+1);
+            
+            if(h.size()>2){
+                h.put(arr[j],h.get(arr[j])-1);
+                if(h.get(arr[j])==0){
+                    h.remove(arr[j]);
+                }
+                j++;
+            }
+            
+            l=Math.max(l,i-j+1);
+        }
+        return l;
+    }
+}
