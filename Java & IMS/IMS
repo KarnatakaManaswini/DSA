@@ -1,0 +1,61 @@
+INVENTORY MANAGEMENT SYSTEM-  phegondev/IMS-react
+
+POM XML :
+pom.xml stands for Project Object Model XML. It defines the configuration for a Maven project, including:
+•	Project metadata (name, version, description)
+•	Dependencies (external libraries your project needs)
+•	Plugins (tools for compiling, testing, packaging, etc.)
+
+groupId: Unique ID for your project group (like a package name).
+artifactId: The name of the project.
+
+1. Spring Boot Starter Web 
+Purpose: To build web applications, including RESTful services.
+Includes: Spring MVC, Embedded Tomcat (or Jetty/Undertow), Jackson (for JSON serialization/deserialization)
+@RestController, request handling and all takes place.
+
+2. Spring Boot Starter Data JPA 
+Purpose: To simplify database access using JPA (Java Persistence API) and Hibernate.
+Includes: Spring Data JPA, Hibernate (default JPA implementation)
+Mapping Java objects to database tables, creating repositories with minimal boilerplate, Performing CRUD operations.
+@Entity, @Id, @GeneratedValue
+
+3. Lombok 
+Purpose: To reduce boilerplate code in Java classes.
+•	Automatically generates getters, setters, constructors, toString(), etc.
+•	Improves code readability and maintainability
+
+4. Spring Boot Starter Validation 
+Purpose: To validate user input using annotations (JSR-380 / Bean Validation).
+•	Hibernate Validator (default implementation)
+•	Validating request bodies in REST APIs, Ensuring data integrity before processing
+
+
+
+5. Spring Boot Starter Security 
+Purpose: To add authentication and authorization to your application.
+Includes: Spring Security framework
+•	Securing REST endpoints, Role-based access control, Integrating with OAuth2, JWT, LDAP, etc.
+
+6. MySQL JDBC Driver (mysql-connector-j)
+Purpose: To connect your Spring Boot application to a MySQL database.
+•	Enables JDBC communication between the app and MySQL
+•	Required for Spring Data JPA to interact with MySQL
+
+
+application.properties :
+       Src/main/resources/application.properties
+application.properties file is a key configuration file that helps to
+•	Configure database connections
+•	Set server properties
+•	Define logging levels
+•	Customize Spring Boot behavior
+•	Manage security settings
+•	Configure third-party integrations
+
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+Here we are explicitly telling hibernate to use SQL syntax and behavior optimized for MySQL.
+A dialect in Hibernate is a class that defines how Hibernate should generate SQL queries for a specific database. Different databases have different SQL syntax, functions, and behaviors. The dialect ensures compatibility between Hibernate and the database.
+
+spring.jpa.hibernate.ddl-auto=update
+•	Other options: none, validate, create, create-drop.
