@@ -7,11 +7,11 @@ Tensorflow: open source ml framework for building & deploying dl models across p
 •	Scalability- ideal for large scale ml tasks & production level deployment
 
 
-Feature	CPU	GPU	TPU
-Purpose	General computing	Parallel processing & graphics	Specialized ML acceleration
-Core Count	Few powerful cores	Thousands of smaller cores	Custom architecture for tensors
-Best For	Logic, control, OS tasks	AI training, graphics	AI training & inference
-Flexibility	High	Medium	Low (specific to ML)
+Feature             CPU                         	GPU	                        TPU
+Purpose       General computing	      Parallel processing & graphics   Specialized ML acceleration
+Core Count    Few powerful cores	    Thousands of smaller cores     Custom architecture for tensors
+Best For	  Logic, control, OS tasks   AI training, graphics	        AI training & inference
+Flexibility	     High	                   Medium	                        Low (specific to ML)
 
 
 Keras is a high-level neural networks API that runs on top of TensorFlow. It simplifies the process of building deep learning models.
