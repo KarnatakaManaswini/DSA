@@ -1,0 +1,120 @@
+**Potato Disease Classifier**
+
+
+
+This project is called Potato Disease Classifier. This was built using deep learning and computer vision. The objective was to automatically classify potato leaf images into healthy, early blight, or late blight, since early disease detection is very important in agriculture for improving crop yield.
+
+
+
+
+
+I used the PlantVillage dataset, which contains labeled leaf images organized by disease type. I loaded the dataset using TensorFlow (image\_dataset\_from\_directory),which automatically assigns labels based on folder names. All images were resized to 256×256 and normalized to improve training stability.
+
+
+
+
+
+I split the dataset into training, validation, and test sets in an 80–10–10 ratio and optimized the pipeline using caching, shuffling, and prefetching to improve performance during training.
+
+
+
+
+
+The model itself is a Convolutional Neural Network built using Keras. It consists of multiple convolution and max‑pooling layers that extract spatial features from leaf images, followed by dense layers for classification. I also added data augmentation like random flips and rotations to reduce overfitting and improve generalization.
+
+
+
+
+
+I trained the model using the Adam optimizer and sparse categorical cross‑entropy loss for 20 epochs. After training, I evaluated it on unseen test images and verified predictions visually along with confidence scores.
+
+
+
+
+
+Finally, I deployed the model using Streamlit. The user can upload a potato leaf image, and the application preprocesses it, passes it through the trained model, and displays the predicted disease with confidence. This makes the project an end‑to‑end solution from model training to deployment.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\--------------------------
+
+**overview:**
+
+It is a deep learning–based image classification system that identifies potato leaf diseases using Convolutional Neural Networks (CNNs).
+
+The model classifies potato leaves into three categories:
+
+* Healthy
+* Early Blight
+* Late Blight
+
+
+
+Along with training the model, I have also created a Streamlit web application that allows users to upload a leaf image and get real-time predictions with confidence scores.
+
+
+
+
+
+**Dataset Used**
+
+I used the Plant Village dataset, which is a widely used dataset for plant disease detection.
+
+
+
+
+
+**Data Preprocessing \& Augmentation**
+
+Preprocessing Steps:
+
+* Resizing images to 256 × 256
+* Rescaling pixel values from \[0–255] to \[0–1] for faster and stable convergence
+
+
+
+Data Augmentation:
+
+To reduce overfitting and improve generalization, I applied:
+
+* Random horizontal \& vertical flips
+* Random rotations
+
+These layers are added inside the model, which ensures augmentation happens only during training.
+
+
+
+Dataset splitting:
+
+Training- 80%
+
+validation- 10%
+
+Testing- 10%
+
+
+
+
+
+Model Architecture (CNN)
+
+A Sequential CNN model built using TensorFlow Keras.
+
+I used CNN because they:
+
+* Capture spatial features
+* Learn edges, textures, and disease patterns
+* Reduce parameter count using shared weights
+
