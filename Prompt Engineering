@@ -1,0 +1,241 @@
+1.what is prompt engineering \& why is it important?
+
+It is the process of designing \& optimising input prompts to get the best possible output from LLMs.
+
+
+
+Importance:
+
+improves output quality
+
+reduces hallucinations
+
+controls AI behavior\[ tone, format]
+
+saves time \& cost
+
+
+
+
+
+**Types of prompting techniques:**
+
+**zero-shot:**
+
+We directly asks the model to perform the task without giving any examples.
+
+\->simple or common tasks
+
+\->when model already understands the concept.
+
+Ex: translate " "
+
+
+
+**One-shot:**
+
+We provide one example, before asking the AI to perform the task.
+
+\->when ai need guidance
+
+\->to show expected format or style
+
+Ex: good= +ve bad=?
+
+
+
+**Few-shot:**
+
+we provide multiple examples to strongly guide the AI.
+
+\->complex patterns, custom formats
+
+Ex: if mvy review is +ve or -ve or neutral
+
+
+
+**Instruction-based:**
+
+we clearly tell the model, wt todo \& wt not todo using imperative instructions
+
+
+
+**Role-based:**
+
+we ask the model to assume a role or persona.
+
+
+
+**Chain-of-Thought:**
+
+we ask the model to give step by step reasoning, before generating the final answer.
+
+
+
+Contextual → we provide Background info or context before asking questions
+
+Output-format → we specify how output should be structured
+
+Negative prompting → we specify wt not to be included \[Set restrictions]
+
+Iterative prompting → we improve the prompt based on previous output
+
+
+
+
+
+Prompt Testing \& Debugging → OpenAI Playground, Anthropic Console
+
+Frameworks → LangChain, LlamaIndex
+
+Evaluation \& Monitoring →
+
+&#x20;Weights \& Biases:
+
+&#x20;PromptLayer: tool for logging, versioning \& monitoring prompts. helps debug         prompt chages in production.
+
+Prompt Libraries → provides ready made prompts
+
+&#x20;FlowGPT: for writing, coding, learning, marketing etc
+
+&#x20;PromptBase: for buying \& selling
+
+
+
+\---------------------------------------------------------
+
+
+
+|chatGpt|Text, coding, learning|
+|-|-|
+|google Gemini|Search + Google integration|
+|Claude|Long documents, safety|
+|mid Journey|Artistic images|
+|DALL-E|Realistic images|
+
+
+
+\---------------------------------------------------------
+
+
+
+**Simple prompting strategies:**
+
+* clear \& specific prompt
+* provide context
+* give examples
+* ask step by step reasoning
+* format output
+* assign role
+* refine prompt
+
+
+
+
+
+**Modifiers:**
+
+Modifiers are instructions that shape the quality \& direction of the output.
+
+1. **Length**: refers how long the output should be.
+avoids over/under explaining
+saves tym
+matches exam, presentation or business needs.
+2. **Tone:** controls how it sounds \[emotion/attitude]
+formal, informal, professional, casual, friendly, neutral
+3. **Style**: controls writing approach
+simple, technical, academic, conversational, storytelling
+4. **Format**: controls output structure
+bullet, paragraphs, table, steps, Q\&A
+5. **Perspective**: pov/role that AI takes
+6. Complexity: difficulty level of explaination \[ beginner, intermediate, advanced]
+7. **Audience**: for whom the content is meant for \[schl, clg, professionals, non-tech]
+
+
+
+other modifiers:
+
+language
+
+creativity
+
+reasoning
+
+limitation - wt not to do
+
+source - real world exs, industry standards
+
+
+
+**Elements of prompt:**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5\. what is temperature in LLMs?
+
+controls the randomness of model output.
+
+low temp( 0-0.3): more deterministic \& factual
+
+high temp( 0.7-1): more creative \& diverse
+
+
+
+6\. how do prompts differ in RAG systems?
+
+retrieved external context,
+
+instructions to use that context,
+
+constraints to avoid outside knowledge
+
+
+
+7\. how do u evaluate prompt performance:
+
+accuracy
+
+relevance
+
+consistency
+
+latency \& cost
+
+
+
+8\. prompt instructions attacks
+
+malicious inputs designed to override system instructions \& manipulate the model behavior, potentially causing unsafe/ incorrect outputs
+
+
+
+9\. makes a good prompt?
+
+10\. role-based prompting
+
+
+
+11\. wt is prompt template?
+
+reusable structure with placeholders that allows consistent \& scalable prompt generation in applications.
+
+
+
+12\. token limit
+
+refers to max no of tokens an LLM can process in a single request,including both i/p \& o/p
+
+\-------------------------------------------------
+
