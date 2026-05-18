@@ -1,0 +1,115 @@
+List users = CommonUtil.convertJsonToPOJO("input/User.json", User.class);
+•	This line uses a utility method to read a JSON file (User.json) and convert it into a list of User objects.
+•	CommonUtil.convertJsonToPOJO(...) is likely a custom method that uses Jackson or Gson internally.
+
+@SpringBootApplication
+•	Definition: A convenience annotation that combines:
+•	@Configuration
+•	@EnableAutoConfiguration
+•	@ComponentScan
+•	Purpose: Marks the main class of a Spring Boot application and triggers auto-configuration and component scanning.
+________________________________________
+@EnableAutoConfiguration
+•	Definition: Tells Spring Boot to automatically configure your application based on the dependencies present in the classpath.
+•	Purpose: Reduces the need for manual configuration.
+________________________________________
+🧩 Component-Level Annotations
+@Component
+•	Definition: Marks a class as a Spring-managed component.
+•	Purpose: Enables Spring to detect and register the class as a bean during component scanning.
+@Service
+•	Definition: Specialization of @Component used to define service-layer classes.
+•	Purpose: Indicates that the class contains business logic.
+@Repository
+•	Definition: Specialization of @Component used for data access logic.
+•	Purpose: Enables exception translation for database operations.
+@Controller
+•	Definition: Marks a class as a Spring MVC controller.
+•	Purpose: Handles HTTP requests and returns views (typically used in web applications with UI).
+@RestController
+•	Definition: Combines @Controller and @ResponseBody.
+•	Purpose: Handles HTTP requests and returns data (usually JSON) directly to the client.
+________________________________________
+🔗 Dependency Injection
+@Autowired
+•	Definition: Automatically injects dependencies into Spring-managed beans.
+•	Purpose: Reduces boilerplate code for dependency management.
+________________________________________
+🌐 Web Annotations
+@RequestBody
+•	Definition: Binds the HTTP request body to a method parameter.
+•	Purpose: Used to receive JSON or XML data in REST APIs.
+@PathVariable
+•	Definition: Binds a URI template variable to a method parameter.
+•	Purpose: Extracts dynamic values from the URL.
+@PostMapping
+•	Definition: Maps HTTP POST requests to a method.
+•	Purpose: Used to handle form submissions or data creation.
+________________________________________
+🧰 Other Important Spring Annotations
+@GetMapping
+•	Definition: Maps HTTP GET requests to a method.
+•	Purpose: Used to retrieve data.
+@PutMapping
+•	Definition: Maps HTTP PUT requests to a method.
+•	Purpose: Used to update existing resources.
+@DeleteMapping
+•	Definition: Maps HTTP DELETE requests to a method.
+•	Purpose: Used to delete resources.
+@RequestParam
+•	Definition: Binds query parameters from the URL to method parameters.
+•	Purpose: Used for optional or named parameters in requests.
+@Configuration
+•	Definition: Marks a class as a source of bean definitions.
+•	Purpose: Used to define custom configurations.
+@Bean
+•	Definition: Declares a bean to be managed by Spring.
+•	Purpose: Used inside @Configuration classes to define beans manually.
+@Value
+•	Definition: Injects values from properties files.
+•	Purpose: Used for configuration values.
+
+
+
+@Controller     	Marks a class as a web controller.
+@RestController 	Combines @Controller and @ResponseBody for REST APIs.
+@RequestMapping	  Maps HTTP requests to handler methods.
+
+@GetMapping, @PostMapping, etc.	Shortcut annotations for specific HTTP methods.
+
+@PathVariable	    Binds URI path variables to method parameters.
+@RequestParam	    Binds query parameters to method parameters.
+@RequestBody	    Binds the request body to a method parameter.
+@ResponseBody	    Sends the return value directly as the HTTP response body.
+
+
+ MVC Flow in Spring (Detailed)
+Let’s walk through the complete request lifecycle in a Spring MVC application:
+1. Client Sends Request
+•	A user sends an HTTP request (e.g., GET /products).
+2. Front Controller: DispatcherServlet
+•	Spring Boot automatically registers a DispatcherServlet.
+•	It acts as the Front Controller: the single entry point for all incoming requests.
+3. Handler Mapping
+•	DispatcherServlet consults HandlerMapping to find the appropriate Controller method.
+•	It uses annotations like @RequestMapping, @GetMapping, etc., to match the URL and HTTP method.
+4. Controller (Request Handler)
+•	The matched controller method (also called a request handler) is invoked.
+•	It processes the request, interacts with the Model, and returns a ModelAndView or data (in REST APIs).
+5. View Resolver
+•	If a view name is returned, the ViewResolver resolves it to an actual view (e.g., a Thymeleaf or JSP file).
+•	In REST APIs, the response is serialized to JSON or XML.
+6. Response Sent to Client
+•	The final response (HTML or JSON) is sent back to the client.
+
+🌱 What is Spring?
+Spring is an open-source framework created to simplify Java development.
+Instead of writing a lot of repetitive code to handle things like connecting to databases, managing security, or handling web requests, Spring takes care of that for you.
+Key Features:
+•	Dependency Injection (DI): Promotes loose coupling by injecting dependencies at runtime.
+•	Aspect-Oriented Programming (AOP): Separates cross-cutting concerns (like logging, security).
+•	Transaction Management: Declarative transaction handling.
+•	Integration with other frameworks: Hibernate, JPA, JMS, etc.
+•	Modular Architecture: You can use only what you need.
+
+
