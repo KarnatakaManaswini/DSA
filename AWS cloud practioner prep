@@ -1,0 +1,710 @@
+EC2- Elastic Compute Cloud 
+Infrastructure as a Service
+
+Mainly capable of:
+renting VMs [ EC2 ]
+EBS-Elastic Block Store
+ELB- Elastic Load Balancer
+ASG- Auto Scaling Group
+
+Types:
+General purpose: find balance btw compute, Mmory and Networking
+Compute purpose:for compute intensive tasks like in ml. [ requires high perfprmance processor]
+Memory optimized: for processing large datasets in memory
+Storage Optimized:for sequential reaad, write and access large data from local storage
+
+
+EC2 Instanes Purchasing Options
+
+On-Demand Instances- short term & uninterrupted workload
+Reserved (1 & 3 years)
+-->Reserved Instances – long workloads 
+-->Convertible Reserved Instances – long workloads with flexible instances
+Savings Plans (1 & 3 years) –commitment to an amount of usage, long workload
+Spot Instances – short workloads, cheap, can lose instances (less reliable)
+Dedicated Hosts – book an entire physical server, control instance placement
+Dedicated Instances – no other customers will share your hardware
+
+-----------
+
+EBS Volume: Elastic Block Store
+network drive attached to instances. We can have data even after instance is terminated.
+--> 1 EBS to 1 instance.[ we can easily detach EBS and attach to other instance]
+--> Bounded by availability zone
+
+EBS SnapShot: Backup of EBS volume
+snapshot archive- takes 24-72 hrs to restore 
+Recycle Bin- retain deleted snapshots
+
+AMI: Amazon Machine Image
+customisation of EC2 instance
+
+EC2 Image Builder:
+automates the creation of VMs or container imgs
+can be run on schedule
+
+EFS- Elastic File System
+managed Network file system that can be mounted on Ec2
+EFS-IA -->(Infrequent access) automatically moves to EFS-IA if not used frequently
+
+Amazon FSx: 3rd party high performance file system
+
+-----------------------------------------------------
+
+Amazon S3 Section
+
+->backup, storage, disaster recovery
+-> application hosting,media hosting, static website[ can             host satic websites & have them accessible on internet]
+->big data analytics
+->software delivery etc..
+
+buckets(directory): allows to store objs(files)
+->globally unique name
+->global service but created in a region 
+
+Objects:(files)
+key value pairs
+max size 5TB, if uploading >5GB must use multi part upload
+
+s3-security:
+user based-> IAM policies
+Resource based-> bucket polices
+              -> object access control list
+              -> bucket access control list
+
+-> Versioning files in S3 enabled at bucket level
+
+Replication:
+Cross Region Replication[CRR]:
+same region replication [ SRR]:
+
+Types: ]]]]
+
+
+
+IAM Access Analyzer for S3:
+-> ensures only intended ppl have access to S3 buckets
+
+SnowBall:
+-> collects, process & migrate data into & out of AWS.
+{ nkaa unnay]
+
+Storage Gateway:
+->Bridge btw on-primises data & s3 data
+-> hybrid storage service
+
+------------------------------------------------
+
+DataBases Section:
+
+Amazon RDS-> almost all sql langs
+
+Amazon Aurora:
+-> only Mysql& postgreSql
+->performance, cost, efficiency > RDS
+Aurora serverless:
+-> Aws takes care of evrything
+-> pay per sec
+
+Elastic Cache:
+->in-memory dbs, high performance,low latency
+->for read intensive tasks
+
+Dynamo DB: [ noSql db] 
+DynamoDB accelerator[ dax]:
+-> in-memory cache for dynamoDB
+
+Redshift:
+-> for OLAP [ online Analytical Processing]
+->data warehouse + sql
+-> columnar storage
+-> integrated with BI tools like QuickSight/ Tableau for visuals
+
+Amazon EMR: Elastic Map Reduce
+-> for Hadoop [ big data]
+->
+
+Amazon Anthena:
+->serverless
+->uses sql to query files
+-> supports almmost all types of files
+  usually queries data from s3 & analyzes. Integrated with Quicksight to generate reports &dashboards.
+
+QuickSight:
+-> ML related, dashboards
+-> Analytics, visualization etc
+
+DocumentDB:
+->similar to MongoDB
+  
+----------------------------------------------
+Docker:
+Is a software developemnt platform used to deploy app.
+Apps are packaged incontainers which can be run on:
+any os
+any machine, no compatability issues etc etc.
+
+Docker imgs are stored in docker repository.
+
+ECS: Elastic Container Service
+-> to launch docker containers on AWS
+-> we have to provide & maintan infrastructure
+-> inbuilt load balancer
+-> starting & stopping containers done by AWS
+
+Fargate: serverless- Function as Service
+-> to launch docker containers on AWS
+-> AWS takes care of everything
+
+ECR: Elastic Container Registry
+-> private docker registry
+-> this is where u store docker imgs, so they can be run by ECS & Fargate
+
+Kubernetes:
+is an open-source system for management, deployment, and scaling of containerized apps (Docker)
+
+EKS: Elastic Kubernetes Service
+-> launch manages kubernetes clusters on AWS
+-> containers can be hosted on:
+   EC2 instances
+   Fargate
+
+Lambda:
+-> serverless- Function as Service
+-> event-driven functions
+-> supports multiple programming langs
+-> easy pricing : pay per request & compute tym
+
+API gateway:
+-> managed service for developers to easily crate, build secure APIs
+->provides security through
+     user Authentication
+     API throttling
+     API keys etc.. 
+
+Batch: 
+Is a job with start & end.[ these are defined as Docker imgs & run on ECS]
+-> dynamically launch Ec2 instances/ spot instances
+-> provisions right amount of compute/memory
+-> we can submit/schedule batch jobs & AWS does the rest
+
+Lightsail:
+-> virtual servers.storage, dbs & networking 
+-----------------------
+Machine learning section:
+
+Rekognition: Recognises obj, text, ppl etc from imgs & videos
+face detection, labeling, celebrity recognition
+
+Transcribe: audio to text
+-> auotomatically remove personal/sensitive info
+-> automatic lang detection for multi-lingual audio
+
+Polly: text to audio
+Translate: translations
+
+Lex: jst like ALEXA
+-> Automatic speech recognition + speech to text + NLP
+-> build conversational bots – chatbots 
+
+Connect: cloud based virtual contact center
+can integrate with other CRM or AWS
+
+Comprehend: for NLP
+
+SageMaker: for building ML models 
+do all processes in one place + provison server
+
+Kendra: ML-powered search engine
+-> doc search service- can extract ans from doc etc
+-> nlp
+
+Personalize: real-time personalized recommendations
+
+Textract: detect/extract text and data in documents
+
+-----------------------
+Amazon VPC
+
+VPC- Virtual private cloud
+is a private network to deploy resources
+
+subnets: sub-division inside vpc
+public: has route to Internet Gateway- access to internet
+private: dont have access to internet
+
+Route tables: defines access to internet & subnet
+
+Internet Gateway: helps VPC instances to connect to internet
+NAT Gateway: helps private subnets to connect to internet, while beign private
+
+
+Network ACL: is like a firewall to subnets
+-> have allow & deney rules
+-> rules include only ip address
+Security Groups: firewall to EC2 instance
+-> have allow rules
+-> include both ip address & other security groups
+
+
+VPC Flow Logs:
+capture info about VPC, subnets, lastic Network Interface
+vpc low logs data goes to s3 & cloud watch logs.
+
+
+VPC Peeering:
+private connection btw 2 VPC
+->no transitive peering
+
+VPC Endpoints:
+allow private access to AWS without using internet
+used to avoid gateways(internet & nat), ip address
+Endpoint Gateway:s3 & DynamoDB
+Endpoint Instance: all services
+
+AWS privatelink:
+private secure connection
+requires Network load balancer, Elastic Network Interface
+
+Site to Site VPN:
+-> connect on-primises to aws
+-> automatically encrypted
+-> over  public internet
+-> must use Customer gateway
+
+Direct Connect:
+-> physical connection btw on-premises & aws
+-> over private network
+-> must use virtual private gateway
+
+Transit gateway:
+-> allow transit peering
+
+
+--------------------------------------------
+
+Global Infrastructure
+
+Latency: tym taken by network packet to reach server. It should be low for better performance.
+Disaster Recovery: Even if one region goes down, the app still works.[ availabilty]
+Attack protection
+
+Region: for deploying apps & infra
+Availability zones: data centres
+Edge Locations: close to users
+
+
+Global Applications:
+
+Global DNS: Route 53:
+->managed DNS service -- route users to apps 
+->supports domain registration
+  DNS queries
+  Health checks
+  Traffic routing policies
+
+-> does not host website, only gives ip addresses
+-> public hosted zone: intenet-facing domains
+   private hosted zone: inside a VPC, cant access from internet
+
+
+Amazon CloudFront: 
+-> Content Delivery Network [improves read performance][accelerates content]
+-> cached content stored at edge locations [caches static content like imgs, html,css,js..]
+
+-> original content stored in Origins like S3,EC2...
+-> DDoS protection [integration Shield, firewall..etc]
+->Geo restrictions option- block or allow specific countries
+-> signed URLs/ cookies option: for premium users
+
+
+S3 Transfer Acceleration:
+-> fastens global uploads & downloads into S3
+file to edge loc to S3 bucket
+
+
+AWS Global Accelerator:
+-> imporve availabilty & performance
+-> uses edge locations but "no cache data"
+[ acclerates non-cacheable traffic][ application is dynamic ]
+-> has 2 global static Ip addresses to route to multiple regions
+
+
+AWS Outposts:
+->AWS delivers & installs physical hardware racks in our on-premises site.
+-> low latency
+   local data processing
+-> Hybrid setup
+-> outposts= AWS region Extension [like mini AWS cloud at ur location]
+still AWS has control over it.
+for ex: u have ur phone( outposts) , but still os updates etc come from company( AWS region)
+-> 2 types : 
+     outposts racks
+     outposts servers
+
+
+AWS Wavelength:
+
+AWS Local Zones:
+
+
+------------------------------------
+Cloud Integration Section
+
+communication is needed btw apps.
+Types:
+   Synchronous : app to app
+   Asyncchronous/ Event based : app to queue to app
+
+
+Amazon SQS:
+-> Queue
+-> msgs kept up to 14 days, deletes when read
+-> used to decouple apps [instead of calling each other apps directly, they use queue as a buffer]
+
+Amazon Kinesis Data Streams:
+-> kinesis= real tym big data streaming
+-> To collect, process & analyze streaming data at any scale
+
+
+Amazon SNS:
+-> sends one msg to many users
+
+Amazon MQ:
+-> SQS + SNS 
+
+-----------------------------------
+Deploying and Managing Infrastructure 
+
+CloudFormation:
+-> Infrastructure as code
+-> declarative way of outlining your aws infrastructure.
+We jst have to say, wt we want. CloudFormation creates those for you in the right order with exact config.
+
+->resources are not manually created. Changes can be reviewed through code.
+-> can easily destry & re-create
+
+
+AWS Cloud Development Kit (CDK):
+-> cloud infrastructure requirements are given through programming lang.
+-> it is further complied to CloudFormation template. Then we can deploy infra & app runtym code 
+
+-> great for lambda func & docker container
+
+
+Elastic Beanstalk:
+-> developer view of deploying application
+-> Platform as a service
+-> this takes care of everything , application code is the only responsiblity of developer
+-> supports almost all langs & docker.
+-> health agent pushes metrics to CloudWatch
+
+
+AWS CodeDeploy:
+-> automatically deploy our application
+-> works with- EC2 instances
+               on-premises services
+               hybrid service
+
+
+CodeCommit:
+-> git
+
+CodeBuild:
+-> code building service
+->complies code, runtests and produce packages that are to be deployed.
+
+
+CodePipeline:
+-> CICD 
+-> code, build, test, deploy
+
+
+AWS System Manager:
+-> hepls to manage EC2 & On-premises
+-> gets operational insights about state of ur infrastructure
+
+
+Deploy: CloudFormation
+        ElasticBeanstalk
+        CodeDeploy
+        System Manager
+
+Developer: CodeCommit
+           CodeBuild
+           CodeDeploy
+           CodePipeline
+           CodeArtifact
+           AWS CDK
+
+-------------------------------
+
+Cloud Monitoring Section:
+
+Amazon CloudWatch metrics:
+-> provides metrics for almost every service in AWS
+metrics= numerical data [ meta data]
+ec2, ebs, s3, billing etc.
+-> we can create custom metrics
+
+
+CloudWatch Alarms: monitors metrics & notify u.Performs actions when thresholds are met.
+3 states- Ok
+          ALARM
+          INSUFFICIENT_DATA
+*Alarm monitors metrics not logs
+
+
+CloudWatch Logs:
+store, view & query logs from apps & aws services.
+
+
+Amazon EventBridge: Event bus, that enrutes events from source to destination
+ex: if X happens, automatically trigger y.
+Trigger lambda/ SNS
+
+
+AWS CloudTrail: [ who did wt, where & when] [Investgation]
+->governance, compliance and audit for ur aws account
+->  trail can be applied to all regions or single region
+
+
+AWS X-Ray:
+-> debugging/ tracing in production
+-> when finding eroors is hard
+
+
+Amazon CodeGuru:
+CG Reviewer: review code to avoid bugs & security issues
+CG Profiler: analyzes app performance & cost optimisation
+
+
+AWS Health Dashboard: [ shows aws health (general+personal)]
+-> All regions, all services health
+-> real-tym alerts
+   root cause analysis
+   upcoming scheduled maintainance
+   region-specific issues 
+
+------------------------------------------
+
+Security & Compliance section
+
+DDOS protection:
+->AWS shield- standard
+              advanced (24/7 premium protection)
+->AWS WAF( web application firewall)
+->CloudFront & Route 53
+
+
+AWS Network Firewall: 
+-> protect entire VPC , from layer 3 to 7
+AWS Firewall Manager:
+-> manage security rules of all accounts of organization
+
+
+Penetration Testing:
+customers can have security assessments & penetration testing without prior approval for 8 services.
+- there are some prohibited activites which we cant test:
+    DNS,DDoS
+    port flooding, request flooding, protocal flooding etc
+
+
+* data at rest & data in transit both should be protected & encrypted.
+
+
+AWS KMS ( key management service):
+-> manages keys encryption
+-> create,store & manage keys to secure aws data.
+
+CloudHSM: [ hardware security module]
+-> provide encryption for software
+-> we have to manage our own encryption keys
+
+
+AWS Certificate Manager (ACM):
+for issuing & managing SSL/TLS cetificate
+
+AWS Secrets Manager:
+-> store secrets like passwords, api keys , tokens 
+-> automatic rotation [ encryption using KMS]
+
+
+AWS Artifact:
+-> portal for compliance docs, reports,certifications
+-> used by: security teams, audit teams
+            enterprises needing regulatory doc
+
+
+Amazon GuardDuty:
+-> threat detection service that uses ML to detect suspicious activity
+Detects-
+ Malicious IPs contacting EC2
+ Unusual API calls
+ Suspicious IAM behavior
+ Compromised instances
+ S3 data exfiltration
+
+
+Amazon Inspector:
+Automated security & vulnerability scanning
+
+
+AWS Config:
+-> records congig state of aws & checks them against compliance rules.
+
+
+Amazon Macie:
+uses ML to find sensitive data
+
+---------------------------------
+
+Other Services
+
+Amazon WorkSpaces: [ provide VDI]
+->Desktop as service- easily provision of windows,linux desktops
+->managed VDI  in the cloud
+* traditional VDI runs on on-premise [ hard to manage]
+
+
+Amazon AppStream 2.0
+->no need to connect to a VDI
+-> stream a desktop app to web browsers
+
+
+AWS IoT core:
+-> easily connect Iot devices to the AWS cloud
+-> applications can communicate even when they are connected
+
+
+AWS AppSync:
+-> store & sync data accross mobile & web apps in real tym
+
+AWS Amplify:
+-> set of tools & services that help u develop & deploy full stack web & mobile apps
+---------------------------------
+6 Pillars of Archiected Framework:
+operational excellence
+reliabilty
+security
+performance efficiency
+sustainabilty
+costoptimisation
+
+Devloper: business hrs email access
+general guidance in <24 hrs
+system impaired < 12 hrs
+
+Business: 24/7 phn, email ,chat
+product system < 4hrs
+production system down < 1hr
+
+Enterprise: access to Technical Account Manager[TAM]
+Concierge support - for billing & acc best practices
+system down- < 15 min
+
+AWS Marketplace:
+->we can buy& sell aws services 
+-> if u buy here, bill goes to aws bill
+
+AWS Training:
+->has both online & offline
+
+
+AWS Professional Services & Partner Network
+->The AWS Professional Services organization is a global team of experts
+->They work alongside your team and a chosen member of the APN
+->APN = AWS Partner Network
+
+APN Technology Partners: 
+providing hardware, connectivity, and software
+APN Consulting Partners: 
+professional services firm to help build on AWS
+APN Training Partners: 
+find who can help you learn AWS 
+
+AWS IQ:
+quickly find professional help for our AWS projects
+
+
+AWS Managed Services:
+-> provides infrastructure & application support on AWS.
+-> 24/365
+
+
+
+-------------------------------------
+S3:
+backup& storage
+media hosting, app hosting
+software delivery
+static website hosting
+
+
+Glue: ETL
+Extract load transform data from s3 to destination
+
+AWS Billing Conductor : 
+ multiple departments, customise billing data, diff business logic
+cost& usage report for each grp
+
+service control policies (SCP): 
+forOraganizations
+
+CloudHSM:
+for secure storage & manage of encryption keys
+uses dedicated hardware app within aws cloud
+
+AWS Support ->does not offer direct connect
+AWS IQ->hepls to connect with awsnprofessional
+
+SnowBall-> support EC2
+migrate 70TB data from on-primses to aws , irrespective of slow& unrealiable internetconnection
+
+
+
+AWS Opswork- 
+automate configuration management using puppet
+
+EMR- Hadoop
+Anthena- query & analyze data from s3 using sql
+Redshift- warehouse
+
+
+TCO Calculator:
+estimates savings on aws vs on-primises
+
+AWS system manager:
+provides unified user interface, so we can view operational data
+
+Amazon GaurdDuty: threat detection & security monitoring
+sheild : DDos protection service
+AWS KMS: 
+Key management service
+provides control over encryption keys
+AWS CloudHSM:
+helps to generate & use our own encryption keys
+
+AWS IAM Acess Analyzer:
+identify & search exteral aWS services
+
+OpenSearch Service (Amazon Elasticsearch Service:
+search & analytics, not related to external resources
+
+Amazon Cognito:
+sign-in signu, mobile , web
+
+AWS Managed Polices cannot be edited,
+so we create a custom IAM policy
+
+snowball: TB transfer
+snowmobile PB tranfer
+
+CodeBuild: 
+build, test deploy apps. 
+Do not provide any IDE
+
+Cloud9: provide ide to run,build, deploy etc jst in browser
+
+AWS appCongig:
+deploy app changes, without writing additional code
